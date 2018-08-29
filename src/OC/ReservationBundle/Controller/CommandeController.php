@@ -9,16 +9,16 @@ class CommandeController extends Controller
 {
     public function indexAction()
     {
-        return new Response("Page accueil");
+        return $this->render('OCReservationBundle:Commande:index.html.twig');
     }
 
     public function billetAction()
     {
-        return new Response("Page billet");
+        return $this->render('OCReservationBundle:Commande:billet.html.twig');
     }
 
     public function recapitulatifAction()
     {
-        return new Response("Page recap");
+        return $this->render('OCReservationBundle:Commande:recapitulatif.html.twig');
     }
 }
