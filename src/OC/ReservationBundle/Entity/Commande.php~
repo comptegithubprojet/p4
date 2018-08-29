@@ -45,6 +45,12 @@ class Commande
      */
     private $email;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombreBillets", type="integer")
+     */
+    private $nombreBillets;
 
     /**
      * Get id.
@@ -102,5 +108,72 @@ class Commande
     public function getEmail()
     {
         return $this->email;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->billets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set type.
+     *
+     * @param \OC\ReservationBundle\Entity\Type|null $type
+     *
+     * @return Commande
+     */
+    public function setType(\OC\ReservationBundle\Entity\Type $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type.
+     *
+     * @return \OC\ReservationBundle\Entity\Type|null
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Add billet.
+     *
+     * @param \OC\ReservationBundle\Entity\Billet $billet
+     *
+     * @return Commande
+     */
+    public function addBillet(\OC\ReservationBundle\Entity\Billet $billet)
+    {
+        $this->billets[] = $billet;
+
+        return $this;
+    }
+
+    /**
+     * Remove billet.
+     *
+     * @param \OC\ReservationBundle\Entity\Billet $billet
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeBillet(\OC\ReservationBundle\Entity\Billet $billet)
+    {
+        return $this->billets->removeElement($billet);
+    }
+
+    /**
+     * Get billets.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBillets()
+    {
+        return $this->billets;
     }
 }

@@ -5,6 +5,10 @@ namespace OC\ReservationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class CommandeType extends AbstractType
 {
@@ -13,8 +17,32 @@ class CommandeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('jour')->add('email')->add('type');
-    }/**
+        $builder
+            ->add('jour')
+            ->add('email')
+            ->add('type', EntityType::class, array(
+                    'class'        => 'OCReservationBundle:Type',
+                    'choice_label' => 'nom',
+                ))
+            ->add('nombreBillets', ChoiceType::class, array(
+                    'choices'  => array(
+                        '1' => 1,
+                        '2' => 2,
+                        '3' => 3,
+                        '4' => 4,
+                        '5' => 5,
+                        '6' => 6,
+                        '7' => 7,
+                        '8' => 8,
+                        '9' => 9,
+                        '10' => 10,
+                    ),
+                ))
+            ->add('save',      SubmitType::class)
+            ;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

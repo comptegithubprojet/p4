@@ -45,6 +45,12 @@ class Commande
      */
     private $email;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombreBillets", type="integer")
+     */
+    private $nombreBillets;
 
     /**
      * Get id.
@@ -169,5 +175,29 @@ class Commande
     public function getBillets()
     {
         return $this->billets;
+    }
+
+    /**
+     * Set nombreBillets.
+     *
+     * @param int $nombreBillets
+     *
+     * @return Commande
+     */
+    public function setNombreBillets($nombreBillets)
+    {
+        $this->nombreBillets = $nombreBillets;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreBillets.
+     *
+     * @return int
+     */
+    public function getNombreBillets()
+    {
+        return $this->nombreBillets;
     }
 }
