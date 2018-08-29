@@ -4,12 +4,19 @@ namespace OC\ReservationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use OC\ReservationBundle\Entity\Commande;
+use OC\ReservationBundle\Form\CommandeType;
 
 class CommandeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('OCReservationBundle:Commande:index.html.twig');
+        $commande = new Commande();
+        $form   = $this->get('form.factory')->create(CommandeType::class, $commande);
+
+        return $this->render('OCReservationBundle:Commande:index.html.twig', array(
+        'form' => $form->createView(),
+        ));
     }
 
     public function billetAction()
