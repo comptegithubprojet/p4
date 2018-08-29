@@ -1,3 +1,11 @@
-oc_reservation_homepage:
+oc_reservation_home:
     path:     /
-    defaults: { _controller: OCReservationBundle:Default:index }
+    defaults: { _controller: OCReservationBundle:Commande:index }
+
+oc_reservation_billet:
+    path:     /billet
+    defaults: { _controller: OCReservationBundle:Commande:billet }
+
+oc_reservation_recapitulatif:
+    path:     /recapitulatif
+    defaults: { _controller: OCReservationBundle:Commande:recapitulatif }
