@@ -33,8 +33,14 @@ class CommandeController extends Controller
     public function billetAction(Request $request)
     {   
         $commande = $this->container->get('session')->get('commande');
-
         $form   = $this->get('form.factory')->create(CommandeBilletType::class, $commande);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
+        {
+            $this->get('session')->set('commande', $commande);
+
+            return $this->redirectToRoute('oc_reservation_recapitulatif');
+        }
 
         return $this->render('OCReservationBundle:Commande:billet.html.twig', array(
         'form' => $form->createView(),
@@ -43,6 +49,10 @@ class CommandeController extends Controller
 
     public function recapitulatifAction()
     {
-        return $this->render('OCReservationBundle:Commande:recapitulatif.html.twig');
+        $commande = $this->container->get('session')->get('commande');
+
+        return $this->render('OCReservationBundle:Commande:recapitulatif.html.twig', array(
+        'commande' => $commande,
+        ));
     }
 }

@@ -5,6 +5,7 @@ namespace OC\ReservationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CommandeBilletType extends AbstractType
 {
@@ -18,8 +19,7 @@ class CommandeBilletType extends AbstractType
                 'entry_type' => BilletType::class,
                 'allow_add' => true,
                 'allow_delete' => true
-
-            ))
+            ))            
 		;
 	}
 
