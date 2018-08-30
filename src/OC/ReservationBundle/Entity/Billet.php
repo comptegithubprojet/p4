@@ -3,6 +3,7 @@
 namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Billet
@@ -38,6 +39,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
      */
     private $nom;
 
@@ -45,6 +47,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
      */
     private $prenom;
 

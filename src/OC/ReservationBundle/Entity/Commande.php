@@ -3,6 +3,7 @@
 namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commande
@@ -42,6 +43,7 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(message="Merci de renseigner un email valide")
      */
     private $email;
 
