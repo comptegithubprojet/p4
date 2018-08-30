@@ -1,4 +1,11 @@
 services:
-#    oc_reservation.example:
-#        class: OC\ReservationBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    oc_reservation.prixbillet:
+        class: OC\ReservationBundle\PrixBillet\OCPrixBillet
+        arguments:
+            - "@OCReservationBundle:Prix"
+
+    OCReservationBundle:Prix:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - OC\ReservationBundle\Entity\Prix

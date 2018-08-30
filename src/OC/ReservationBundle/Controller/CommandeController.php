@@ -51,6 +51,8 @@ class CommandeController extends Controller
     {
         $commande = $this->container->get('session')->get('commande');
 
+        $this->container->get('oc_reservation.prixbillet')->determinationPrixBillet($commande);
+
         return $this->render('OCReservationBundle:Commande:recapitulatif.html.twig', array(
         'commande' => $commande,
         ));

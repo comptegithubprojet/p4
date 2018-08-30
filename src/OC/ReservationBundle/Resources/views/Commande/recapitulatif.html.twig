@@ -24,7 +24,7 @@
 	{% set numeroBillet = '0' %}
 
 	{% for billet in commande.billets %}
-		
+
 		{% set numeroBillet = numeroBillet + 1 %}
 			
         <tr>
@@ -32,8 +32,8 @@
         	<th>{{ billet.nom }}</th>
         	<th>{{ billet.prenom }}</th>
         	<th>{{ billet.dateNaissance|date('d/m/Y') }}</th>
-        	<th>Tarif</th>
-        	<th>Prix du billet</th>
+        	<th>{{ billet.prix.nom }}</th>
+        	<th>{{ billet.prix.valeur }}</th>
         </tr>
     {% endfor %}
 
