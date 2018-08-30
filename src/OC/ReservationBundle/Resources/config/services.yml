@@ -4,6 +4,9 @@ services:
         arguments:
             - "@OCReservationBundle:Prix"
 
+    oc_reservation.prixtotal:
+        class: OC\ReservationBundle\PrixTotal\OCPrixTotal
+
     OCReservationBundle:Prix:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]

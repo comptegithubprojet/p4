@@ -46,6 +46,13 @@ class Commande
     private $email;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="prixTotal", type="integer")
+     */
+    private $prixTotal;
+
+    /**
      * Get id.
      *
      * @return int
@@ -168,5 +175,29 @@ class Commande
     public function getBillets()
     {
         return $this->billets;
+    }
+
+    /**
+     * Set prixTotal.
+     *
+     * @param int $prixTotal
+     *
+     * @return Commande
+     */
+    public function setPrixTotal($prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get prixTotal.
+     *
+     * @return int
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
     }
 }

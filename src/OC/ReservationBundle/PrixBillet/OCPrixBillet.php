@@ -13,7 +13,6 @@ class OCPrixBillet
 		$this->repositoryPrix = $repositoryPrix;
 	}
 
-
 	/**
 	 * Associe une entité Prix à l'entité Billet
 	 *
@@ -22,8 +21,6 @@ class OCPrixBillet
 	 */
 	public function determinationPrixBillet($commande)
 	{
-
-
 		$listPrix = $this->repositoryPrix->findAll();
 
 		foreach($commande->getBillets() as $billet)
