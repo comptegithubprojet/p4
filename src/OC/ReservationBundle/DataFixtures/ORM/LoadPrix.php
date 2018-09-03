@@ -10,10 +10,16 @@ class LoadPrix implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
+        $prix0 = new Prix();
         $prix1 = new Prix();
         $prix2 = new Prix();
         $prix3 = new Prix();
         $prix4 = new Prix();
+
+        $prix0->setNom('Gratuit');
+        $prix0->setValeur('0');
+        $prix0->setAgeMin('0');
+        $prix0->setAgeMax('3');
 
         $prix1->setNom('Enfant');
         $prix1->setValeur('8');
@@ -28,14 +34,15 @@ class LoadPrix implements FixtureInterface
         $prix3->setNom('Senior');
         $prix3->setValeur('12');
         $prix3->setAgeMin('60');
-        $prix3->setAgeMax('100');
+        $prix3->setAgeMax('1000');
 
         $prix4->setNom('Reduit');
         $prix4->setValeur('10');
         $prix4->setAgeMin('12');
-        $prix4->setAgeMax('100');
+        $prix4->setAgeMax('1000');
 
 
+        $manager->persist($prix0);
         $manager->persist($prix1);
         $manager->persist($prix2);
         $manager->persist($prix3);

@@ -5,6 +5,7 @@ namespace OC\ReservationBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class BilletType extends AbstractType
 {
@@ -13,7 +14,13 @@ class BilletType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('dateNaissance')->add('nationalite')->add('reduction');
+        $builder
+        ->add('nom')
+        ->add('prenom')
+        ->add('dateNaissance', BirthdayType::class)
+        ->add('nationalite')
+        ->add('reduction')
+        ;
     }/**
      * {@inheritdoc}
      */

@@ -68,7 +68,7 @@ class Billet
     /**
      * @var bool
      *
-     * @ORM\Column(name="reduction", type="boolean")
+     * @ORM\Column(name="reduction", type="boolean", options={"default":false})
      */
     private $reduction;
 

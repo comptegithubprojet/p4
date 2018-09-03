@@ -21,7 +21,13 @@ class OCPrixBillet
 	 */
 	public function determinationPrixBillet($commande)
 	{
-		$listPrix = $this->repositoryPrix->findAll();
+		$tarifGratuit = $this->repositoryPrix->findOneBy(array('nom' => 'Gratuit'));
+		$tarifEnfant = $this->repositoryPrix->findOneBy(array('nom' => 'Enfant'));
+		$tarifNormal = $this->repositoryPrix->findOneBy(array('nom' => 'Normal'));
+		$tarifSenior = $this->repositoryPrix->findOneBy(array('nom' => 'Senior'));
+		$tarifReduit = $this->repositoryPrix->findOneBy(array('nom' => 'Reduit'));
+
+		$listPrix = array($tarifGratuit, $tarifEnfant, $tarifNormal, $tarifSenior);
 
 		foreach($commande->getBillets() as $billet)
 		{
@@ -32,9 +38,13 @@ class OCPrixBillet
 
 			foreach ($listPrix as $prix)
 			{
-				if($age <= $prix->getAgeMax() && $age >= $prix->getAgeMin())
+				if($billet->getReduction() == true && $age >= 12)
 				{
-					$billet->setPrix($prix);
+					$billet->setPrix($tarifReduit);
+				}
+				elseif($billet->getReduction() == false && $age <= $prix->getAgeMax() && $age >= $prix->getAgeMin())
+				{			
+					$billet->setPrix($prix);		
 				}
 			}
 

@@ -3,6 +3,7 @@
 namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Billet
@@ -38,6 +39,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
      */
     private $nom;
 
@@ -45,6 +47,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
      */
     private $prenom;
 
@@ -65,7 +68,7 @@ class Billet
     /**
      * @var bool
      *
-     * @ORM\Column(name="reduction", type="boolean")
+     * @ORM\Column(name="reduction", type="boolean", options={"default":false})
      */
     private $reduction;
 
@@ -198,5 +201,53 @@ class Billet
     public function getReduction()
     {
         return $this->reduction;
+    }
+
+    /**
+     * Set prix.
+     *
+     * @param \OC\ReservationBundle\Entity\Prix|null $prix
+     *
+     * @return Billet
+     */
+    public function setPrix(\OC\ReservationBundle\Entity\Prix $prix = null)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix.
+     *
+     * @return \OC\ReservationBundle\Entity\Prix|null
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set commande.
+     *
+     * @param \OC\ReservationBundle\Entity\Commande $commande
+     *
+     * @return Billet
+     */
+    public function setCommande(\OC\ReservationBundle\Entity\Commande $commande)
+    {
+        $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get commande.
+     *
+     * @return \OC\ReservationBundle\Entity\Commande
+     */
+    public function getCommande()
+    {
+        return $this->commande;
     }
 }
