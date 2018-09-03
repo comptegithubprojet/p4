@@ -10,4 +10,36 @@
 		{{ form(form) }}
 	</div>
 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.fr.min.js"></script>
+
+	<script>
+        $(document).ready(function () {
+
+        	var date = new Date();
+
+			var year = date.getFullYear();
+			var nextYear = year + 1;
+
+			var dec = '25/12/'+year;
+			var nov = '01/11/'+year;
+			var mai = '01/05/'+year;
+			var decNext = '25/12/'+nextYear;
+			var novNext = '01/11/'+nextYear;
+			var maiNext = '01/05/'+nextYear;
+
+            $('.datepicker').datepicker({
+                format: "dd-mm-yyyy",
+                language: "fr",
+                autoclose: true,
+                daysOfWeekDisabled: '2',
+                datesDisabled: [dec, nov, mai, decNext, novNext, maiNext],
+                startDate: date,
+                endDate: '+1y',
+                maxViewMode: 1,                    
+            }).keydown(false);
+        });
+
+    </script>
+
 {% endblock %}

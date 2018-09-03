@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class CommandeType extends AbstractType
 {
@@ -17,12 +18,17 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('jour')
+            ->add('jour', DateType::class, array(
+                'widget' => 'single_text',
+                'format' => 'dd-mm-yyyy',
+                'html5' => false,
+                'attr' => ['class' => 'datepicker'],
+            ))
             ->add('email')
             ->add('type', EntityType::class, array(
-                    'class'        => 'OCReservationBundle:Type',
-                    'choice_label' => 'nom',
-                ))
+                'class'        => 'OCReservationBundle:Type',
+                'choice_label' => 'nom',
+            ))
             ->add('save',      SubmitType::class)
             ;
     }
