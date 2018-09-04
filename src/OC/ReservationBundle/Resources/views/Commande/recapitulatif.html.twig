@@ -17,6 +17,7 @@
 			<th>Nom</th>
 			<th>Prénom</th>
 			<th>Date de naissance</th>
+			<th>Pays</th>
 			<th>Tarif</th>
 			<th>Prix du billet</th>
 		</tr>
@@ -32,6 +33,7 @@
         	<th>{{ billet.nom }}</th>
         	<th>{{ billet.prenom }}</th>
         	<th>{{ billet.dateNaissance|date('d/m/Y') }}</th>
+        	<th>{{ billet.pays }}</th>
         	<th>{{ billet.prix.nom }}</th>
         	<th>{{ billet.prix.valeur }}</th>
         </tr>

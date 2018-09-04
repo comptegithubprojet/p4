@@ -44,6 +44,7 @@ class CommandeController extends Controller
 
         return $this->render('OCReservationBundle:Commande:billet.html.twig', array(
         'form' => $form->createView(),
+        'commande' => $commande,
         ));
     }
 

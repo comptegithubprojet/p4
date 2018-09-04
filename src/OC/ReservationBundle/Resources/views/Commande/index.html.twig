@@ -21,18 +21,18 @@
 			var year = date.getFullYear();
 			var nextYear = year + 1;
 
-			var dec = '25/12/'+year;
-			var nov = '01/11/'+year;
-			var mai = '01/05/'+year;
-			var decNext = '25/12/'+nextYear;
-			var novNext = '01/11/'+nextYear;
-			var maiNext = '01/05/'+nextYear;
+			var dec = year+'/12/25';
+			var nov = year+'/11/01';
+			var mai = year+'/05/01';
+			var decNext = nextYear+'/12/25';
+			var novNext = nextYear+'/11/01';
+			var maiNext = nextYear+'/05/01';
 
             $('.datepicker').datepicker({
-                format: "dd-mm-yyyy",
+                format: "yyyy-mm-dd",
                 language: "fr",
                 autoclose: true,
-                daysOfWeekDisabled: '2',
+                daysOfWeekDisabled: '0, 2',
                 datesDisabled: [dec, nov, mai, decNext, novNext, maiNext],
                 startDate: date,
                 endDate: '+1y',

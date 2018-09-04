@@ -62,8 +62,9 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="nationalite", type="string", length=255)
+     * @Assert\Country()
      */
-    private $nationalite;
+    private $pays;
 
     /**
      * @var bool
@@ -153,30 +154,6 @@ class Billet
     public function getDateNaissance()
     {
         return $this->dateNaissance;
-    }
-
-    /**
-     * Set nationalite.
-     *
-     * @param string $nationalite
-     *
-     * @return Billet
-     */
-    public function setNationalite($nationalite)
-    {
-        $this->nationalite = $nationalite;
-
-        return $this;
-    }
-
-    /**
-     * Get nationalite.
-     *
-     * @return string
-     */
-    public function getNationalite()
-    {
-        return $this->nationalite;
     }
 
     /**

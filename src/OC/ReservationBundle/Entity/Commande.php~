@@ -3,6 +3,7 @@
 namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commande
@@ -42,8 +43,17 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email(message="Merci de renseigner un email valide")
      */
     private $email;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbBillets", type="integer")
+     * @Assert\Range(min=1, max=10, minMessage="Le nombre de billets doit etre compris entre 1 et 10", maxMessage="Le nombre de billets doit etre compris entre 1 et 10")
+     */
+    private $nbBillets;
 
     /**
      * @var int
@@ -175,5 +185,29 @@ class Commande
     public function getBillets()
     {
         return $this->billets;
+    }
+
+    /**
+     * Set prixTotal.
+     *
+     * @param int $prixTotal
+     *
+     * @return Commande
+     */
+    public function setPrixTotal($prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get prixTotal.
+     *
+     * @return int
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
     }
 }

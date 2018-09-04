@@ -61,9 +61,10 @@ class Billet
     /**
      * @var string
      *
-     * @ORM\Column(name="nationalite", type="string", length=255)
+     * @ORM\Column(name="pays", type="string", length=255)
+     * @Assert\Country()
      */
-    private $nationalite;
+    private $pays;
 
     /**
      * @var bool
@@ -156,30 +157,6 @@ class Billet
     }
 
     /**
-     * Set nationalite.
-     *
-     * @param string $nationalite
-     *
-     * @return Billet
-     */
-    public function setNationalite($nationalite)
-    {
-        $this->nationalite = $nationalite;
-
-        return $this;
-    }
-
-    /**
-     * Get nationalite.
-     *
-     * @return string
-     */
-    public function getNationalite()
-    {
-        return $this->nationalite;
-    }
-
-    /**
      * Set reduction.
      *
      * @param bool $reduction
@@ -249,5 +226,29 @@ class Billet
     public function getCommande()
     {
         return $this->commande;
+    }
+
+    /**
+     * Set pays.
+     *
+     * @param string $pays
+     *
+     * @return Billet
+     */
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+
+    /**
+     * Get pays.
+     *
+     * @return string
+     */
+    public function getPays()
+    {
+        return $this->pays;
     }
 }

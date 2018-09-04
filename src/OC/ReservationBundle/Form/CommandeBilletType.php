@@ -15,10 +15,11 @@ class CommandeBilletType extends AbstractType
 			->remove('jour')
 			->remove('email')
 			->remove('type')
+			->remove('nbBillets')
 			->add('billets', CollectionType::class, array(
                 'entry_type' => BilletType::class,
                 'allow_add' => true,
-                'allow_delete' => true
+                'allow_delete' => false
             ))            
 		;
 	}

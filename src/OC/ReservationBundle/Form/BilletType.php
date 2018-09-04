@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 
 class BilletType extends AbstractType
 {
@@ -18,7 +19,7 @@ class BilletType extends AbstractType
         ->add('nom')
         ->add('prenom')
         ->add('dateNaissance', BirthdayType::class)
-        ->add('nationalite')
+        ->add('pays', CountryType::class)
         ->add('reduction')
         ;
     }/**

@@ -50,6 +50,14 @@ class Commande
     /**
      * @var int
      *
+     * @ORM\Column(name="nbBillets", type="integer")
+     * @Assert\Range(min=1, max=10, minMessage="Le nombre de billets doit etre compris entre 1 et 10", maxMessage="Le nombre de billets doit etre compris entre 1 et 10")
+     */
+    private $nbBillets;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="prixTotal", type="integer")
      */
     private $prixTotal;
@@ -201,5 +209,29 @@ class Commande
     public function getPrixTotal()
     {
         return $this->prixTotal;
+    }
+
+    /**
+     * Set nbBillets.
+     *
+     * @param int $nbBillets
+     *
+     * @return Commande
+     */
+    public function setNbBillets($nbBillets)
+    {
+        $this->nbBillets = $nbBillets;
+
+        return $this;
+    }
+
+    /**
+     * Get nbBillets.
+     *
+     * @return int
+     */
+    public function getNbBillets()
+    {
+        return $this->nbBillets;
     }
 }

@@ -20,7 +20,6 @@ class CommandeType extends AbstractType
         $builder
             ->add('jour', DateType::class, array(
                 'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
                 'html5' => false,
                 'attr' => ['class' => 'datepicker'],
             ))
@@ -28,6 +27,20 @@ class CommandeType extends AbstractType
             ->add('type', EntityType::class, array(
                 'class'        => 'OCReservationBundle:Type',
                 'choice_label' => 'nom',
+            ))
+            ->add('nbBillets', ChoiceType::class, array(
+                'choices' => array(
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                )
             ))
             ->add('save',      SubmitType::class)
             ;
