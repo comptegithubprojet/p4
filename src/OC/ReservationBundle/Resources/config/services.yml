@@ -12,3 +12,10 @@ services:
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
             - OC\ReservationBundle\Entity\Prix
+
+    oc_reservation.stripepaiement:
+        class: OC\ReservationBundle\StripePaiement\OCStripePaiement
+
+    oc_reservation.envoibillet:
+        class: OC\ReservationBundle\EnvoiBillet\OCEnvoiBillet
+        arguments: ["@mailer", "@templating"]

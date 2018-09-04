@@ -13,6 +13,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Commande
 {
+    const PAIEMENT_NON_VALIDE = 1;
+    const PAIEMENT_VALIDE = 2;
+    
     /**
      * @ORM\OneToOne(targetEntity="OC\ReservationBundle\Entity\Type", cascade={"persist"})
      */
