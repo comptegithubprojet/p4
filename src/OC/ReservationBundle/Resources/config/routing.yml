@@ -9,3 +9,7 @@ oc_reservation_billet:
 oc_reservation_recapitulatif:
     path:     /recapitulatif
     defaults: { _controller: OCReservationBundle:Commande:recapitulatif }
+
+oc_reservation_checkout:
+    path:     /checkout
+    defaults: { _controller: OCReservationBundle:Commande:checkout }

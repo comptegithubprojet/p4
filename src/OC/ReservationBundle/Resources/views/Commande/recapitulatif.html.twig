@@ -35,12 +35,25 @@
         	<th>{{ billet.dateNaissance|date('d/m/Y') }}</th>
         	<th>{{ billet.pays }}</th>
         	<th>{{ billet.prix.nom }}</th>
-        	<th>{{ billet.prix.valeur }}</th>
+        	<th>{{ billet.prix.valeur|number_format(2, ',') }}</th>
         </tr>
     {% endfor %}
 
     </table>
 
-    <p>Montant total de la commande : {{ commande.prixTotal }}</p>
+    <p>Montant total de la commande : {{ commande.prixTotal|number_format(2, ',') }}</p>
+
+    <form action="{{ path('oc_reservation_checkout') }}" method="POST">
+	    <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_llFdgKV13hfAiJ0ieHhgaFw8"
+            data-amount="{{ commande.prixTotal }}00"
+            data-name="oc-stripe"
+            data-description="Widget"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-currency="eur">
+	    </script>
+	</form>
 
 {% endblock %}
