@@ -20,14 +20,14 @@ class OCEnvoiBillet
 	 */
 	public function envoiBilletMail($billet, $commande)
 	{
-		$message = (new \Swift_Message('Hello Email'))
+		$message = (new \Swift_Message('Reservation musée du Louvre '.$billet->getNom()))
         ->setFrom('reizswety@gmail.com')
         ->setTo($commande->getEmail())
         ->setBody(
-            $this->templating->render(
-                'OCReservationBundle:Email:billet.html.twig',
-                array('billet' => $billet)
-            ),
+            $this->templating->render('OCReservationBundle:Email:billet.html.twig', array(
+            	'billet' => $billet,
+            	'commande' => $commande
+            )),
             'text/html'
         )
         ;

@@ -83,6 +83,13 @@ class Billet
     private $prixNom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="text")
+     */
+    private $code;
+
+    /**
      * Get id.
      *
      * @return int
@@ -282,5 +289,29 @@ class Billet
     public function getPrixNom()
     {
         return $this->prixNom;
+    }
+
+    /**
+     * Set code.
+     *
+     * @param string $code
+     *
+     * @return Billet
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code.
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
 }

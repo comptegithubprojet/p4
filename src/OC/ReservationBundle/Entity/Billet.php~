@@ -83,6 +83,13 @@ class Billet
     private $prixNom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="text")
+     */
+    private $code;
+
+    /**
      * Get id.
      *
      * @return int
@@ -234,5 +241,53 @@ class Billet
     public function getPays()
     {
         return $this->pays;
+    }
+
+    /**
+     * Set prixValeur.
+     *
+     * @param int $prixValeur
+     *
+     * @return Billet
+     */
+    public function setPrixValeur($prixValeur)
+    {
+        $this->prixValeur = $prixValeur;
+
+        return $this;
+    }
+
+    /**
+     * Get prixValeur.
+     *
+     * @return int
+     */
+    public function getPrixValeur()
+    {
+        return $this->prixValeur;
+    }
+
+    /**
+     * Set prixNom.
+     *
+     * @param string $prixNom
+     *
+     * @return Billet
+     */
+    public function setPrixNom($prixNom)
+    {
+        $this->prixNom = $prixNom;
+
+        return $this;
+    }
+
+    /**
+     * Get prixNom.
+     *
+     * @return string
+     */
+    public function getPrixNom()
+    {
+        return $this->prixNom;
     }
 }

@@ -71,9 +71,11 @@ class CommandeController extends Controller
         if($commande::PAIEMENT_VALIDE !== null) 
         {
             $envoiBillet = $this->container->get('oc_reservation.envoibillet');
+            $codeBillet = $this->container->get('oc_reservation.codebillet');
 
             foreach ($commande->getBillets() as $billet) 
             {
+                $codeBillet->genereCode($billet);
                 $envoiBillet->envoiBilletMail($billet, $commande);
             }
 

@@ -14,7 +14,7 @@ class OCPrixBillet
 	}
 
 	/**
-	 * Associe une entité Prix à l'entité Billet
+	 * Determine les attributs prixValeur et prixNom à l'entité Billet
 	 *
 	 * @param entity $commande
 	 * @return 

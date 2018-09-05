@@ -1,1 +1,7 @@
-<p>Test<p>
+<p>Musée du Louvre</p>
+<p>LOGO du musée</p>
+<p>Date : {{ commande.jour|date('d/m/Y') }}</p>
+<p>Tarif : {{ billet.prixValeur|number_format(2, ',') }}</p>
+<p>Nom du visiteur : {{ billet.nom }}</p>
+<p>Prenom du visiteur : {{ billet.prenom }}</p>
+<p>Code billet : {{ billet.code }}</p>
