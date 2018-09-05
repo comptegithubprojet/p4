@@ -4,6 +4,7 @@ namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use OC\ReservationBundle\Validator\TypeDate;
 
 /**
  * Commande
@@ -65,6 +66,7 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @TypeDate()
      */
     private $type;
 

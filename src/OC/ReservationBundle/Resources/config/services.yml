@@ -22,3 +22,9 @@ services:
 
     oc_reservation.codebillet:
         class: OC\ReservationBundle\CodeBillet\OCCodeBillet
+
+    oc_reservation.validator.typedate:                              
+        class: OC\ReservationBundle\Validator\TypeDateValidator
+        arguments: ['@session']     
+        tags:
+            - { name: validator.constraint_validator, alias: oc_reservation_typedate } 
