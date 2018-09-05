@@ -16,7 +16,7 @@ class OCPrixTotal
 
 		foreach($commande->getBillets() as $billet)
 		{
-			$prixTotal += $billet->getPrix()->getValeur();
+			$prixTotal += $billet->getPrixValeur();
 		}
 
 		$commande->setPrixTotal($prixTotal);

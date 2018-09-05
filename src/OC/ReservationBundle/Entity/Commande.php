@@ -17,12 +17,7 @@ class Commande
     const PAIEMENT_VALIDE = 2;
     
     /**
-     * @ORM\OneToOne(targetEntity="OC\ReservationBundle\Entity\Type", cascade={"persist"})
-     */
-    private $type;
-
-    /**
-     * @ORM\OneToMany(targetEntity="OC\ReservationBundle\Entity\Billet", mappedBy="commande")
+     * @ORM\OneToMany(targetEntity="OC\ReservationBundle\Entity\Billet", mappedBy="commande", cascade={"persist"})
      */
     private $billets; 
 
@@ -64,6 +59,24 @@ class Commande
      * @ORM\Column(name="prixTotal", type="integer")
      */
     private $prixTotal;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->billets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id.
@@ -121,37 +134,6 @@ class Commande
     public function getEmail()
     {
         return $this->email;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->billets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set type.
-     *
-     * @param \OC\ReservationBundle\Entity\Type|null $type
-     *
-     * @return Commande
-     */
-    public function setType(\OC\ReservationBundle\Entity\Type $type = null)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type.
-     *
-     * @return \OC\ReservationBundle\Entity\Type|null
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -236,5 +218,29 @@ class Commande
     public function getNbBillets()
     {
         return $this->nbBillets;
+    }
+
+    /**
+     * Set type.
+     *
+     * @param string $type
+     *
+     * @return Commande
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

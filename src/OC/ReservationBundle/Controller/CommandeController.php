@@ -62,7 +62,9 @@ class CommandeController extends Controller
 
     public function checkoutAction()
     {
-        $commande = $this->container->get('session')->get('commande');
+        $session = $this->container->get('session');
+
+        $commande = $session->get('commande');
 
         $this->container->get('oc_reservation.stripepaiement')->validationPaiement($commande);
 
@@ -74,6 +76,18 @@ class CommandeController extends Controller
             {
                 $envoiBillet->envoiBilletMail($billet, $commande);
             }
+
+            $em = $this->getDoctrine()->getManager();
+
+            foreach($commande->getBillets() as $billet)
+            {
+                $billet->setCommande($commande);               
+            }
+
+            $em->persist($commande);
+            $em->flush();
+
+            $session->set('commande', null);
 
             return $this->redirectToRoute("oc_reservation_home");
         }

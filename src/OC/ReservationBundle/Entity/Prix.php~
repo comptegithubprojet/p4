@@ -31,7 +31,7 @@ class Prix
     /**
      * @var int
      *
-     * @ORM\Column(name="valeur", type="integer")
+     * @ORM\Column(name="valeur", type="float")
      */
     private $valeur;
 

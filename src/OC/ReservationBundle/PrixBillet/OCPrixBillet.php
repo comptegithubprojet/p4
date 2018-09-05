@@ -40,11 +40,13 @@ class OCPrixBillet
 			{
 				if($billet->getReduction() == true && $age >= 12)
 				{
-					$billet->setPrix($tarifReduit);
+					$billet->setPrixValeur($tarifReduit->getValeur());
+					$billet->setPrixNom($tarifReduit->getNom());
 				}
 				elseif($billet->getReduction() == false && $age <= $prix->getAgeMax() && $age >= $prix->getAgeMin())
 				{			
-					$billet->setPrix($prix);		
+					$billet->setPrixValeur($prix->getValeur());
+					$billet->setPrixNom($prix->getNom());		
 				}
 			}
 

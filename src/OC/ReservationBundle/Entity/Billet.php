@@ -15,11 +15,6 @@ class Billet
 {
 
     /**
-     * @ORM\OneToOne(targetEntity="OC\ReservationBundle\Entity\Prix", cascade={"persist"})
-     */
-    private $prix;
-
-    /**
      * @ORM\ManyToOne(targetEntity="OC\ReservationBundle\Entity\Commande", inversedBy="billets")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -73,6 +68,19 @@ class Billet
      */
     private $reduction;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prixValeur", type="integer")
+     */
+    private $prixValeur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prixNom", type="string", length=255)
+     */
+    private $prixNom;
 
     /**
      * Get id.
@@ -181,30 +189,6 @@ class Billet
     }
 
     /**
-     * Set prix.
-     *
-     * @param \OC\ReservationBundle\Entity\Prix|null $prix
-     *
-     * @return Billet
-     */
-    public function setPrix(\OC\ReservationBundle\Entity\Prix $prix = null)
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    /**
-     * Get prix.
-     *
-     * @return \OC\ReservationBundle\Entity\Prix|null
-     */
-    public function getPrix()
-    {
-        return $this->prix;
-    }
-
-    /**
      * Set commande.
      *
      * @param \OC\ReservationBundle\Entity\Commande $commande
@@ -250,5 +234,53 @@ class Billet
     public function getPays()
     {
         return $this->pays;
+    }
+
+    /**
+     * Set prixValeur.
+     *
+     * @param int $prixValeur
+     *
+     * @return Billet
+     */
+    public function setPrixValeur($prixValeur)
+    {
+        $this->prixValeur = $prixValeur;
+
+        return $this;
+    }
+
+    /**
+     * Get prixValeur.
+     *
+     * @return int
+     */
+    public function getPrixValeur()
+    {
+        return $this->prixValeur;
+    }
+
+    /**
+     * Set prixNom.
+     *
+     * @param string $prixNom
+     *
+     * @return Billet
+     */
+    public function setPrixNom($prixNom)
+    {
+        $this->prixNom = $prixNom;
+
+        return $this;
+    }
+
+    /**
+     * Get prixNom.
+     *
+     * @return string
+     */
+    public function getPrixNom()
+    {
+        return $this->prixNom;
     }
 }

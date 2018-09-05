@@ -24,9 +24,11 @@ class CommandeType extends AbstractType
                 'attr' => ['class' => 'datepicker'],
             ))
             ->add('email')
-            ->add('type', EntityType::class, array(
-                'class'        => 'OCReservationBundle:Type',
-                'choice_label' => 'nom',
+            ->add('type', ChoiceType::class, array(
+                'choices' => array(
+                    'Journée'      => 'Journée',
+                    'Demi-journée' => 'Demi-journée',
+                )                
             ))
             ->add('nbBillets', ChoiceType::class, array(
                 'choices' => array(
