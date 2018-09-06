@@ -36,6 +36,7 @@ class Commande
      * @var \DateTime
      *
      * @ORM\Column(name="jour", type="date")
+     * @Assert\DateTime(message="Veuillez rentrer une date valide")
      * @CapaciteMax()
      */
     private $jour;
@@ -44,7 +45,7 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\Email(message="Merci de renseigner un email valide")
+     * @Assert\Email(message="Veuillez rentrer un email valide")
      */
     private $email;
 
@@ -68,6 +69,7 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Choice(choices={"Journée", "Demi-journée"}, message="Veuillez rentrer un type de billet valide")
      * @TypeDate()
      */
     private $type;

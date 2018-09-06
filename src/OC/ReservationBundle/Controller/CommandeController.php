@@ -15,7 +15,15 @@ class CommandeController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $commande = new Commande();
+        if($this->container->get('session')->get('commande') !== null)
+        {
+            $commande = $this->container->get('session')->get('commande');
+        }
+        else
+        {
+            $commande = new Commande();
+        }
+        
         $form   = $this->get('form.factory')->create(CommandeType::class, $commande);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
@@ -33,6 +41,12 @@ class CommandeController extends Controller
     public function billetAction(Request $request)
     {   
         $commande = $this->container->get('session')->get('commande');
+
+        if($commande == null)
+        {
+            return $this->redirectToRoute("oc_reservation_home");
+        }
+
         $form   = $this->get('form.factory')->create(CommandeBilletType::class, $commande);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid())
@@ -52,8 +66,23 @@ class CommandeController extends Controller
     {
         $commande = $this->container->get('session')->get('commande');
 
+        if($commande == null)
+        {
+            return $this->redirectToRoute("oc_reservation_home");
+
+            if($commande->getBillets() == null)
+            {
+                return $this->redirectToRoute("oc_reservation_billet");
+            }
+        }
+
         $this->container->get('oc_reservation.prixbillet')->determinationPrixBillet($commande);
         $this->container->get('oc_reservation.prixtotal')->determinationPrixTotal($commande);
+
+        if($commande->getPrixTotal() == 0)
+        {
+            return $this->redirectToRoute("oc_reservation_billet");
+        }
 
         return $this->render('OCReservationBundle:Commande:recapitulatif.html.twig', array(
         'commande' => $commande,
@@ -62,11 +91,20 @@ class CommandeController extends Controller
 
     public function checkoutAction()
     {
+        $commande = $this->container->get('session')->get('commande');
+
+        if(!isset($_POST['stripeToken']))
+        {
+            return $this->redirectToRoute("oc_reservation_recapitulatif");
+        }
+
         $session = $this->container->get('session');
 
         $commande = $session->get('commande');
 
         $this->container->get('oc_reservation.stripepaiement')->validationPaiement($commande);
+
+
 
         if($commande::PAIEMENT_VALIDE !== null) 
         {

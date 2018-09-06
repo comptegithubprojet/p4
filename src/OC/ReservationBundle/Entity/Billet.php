@@ -35,6 +35,7 @@ class Billet
      *
      * @ORM\Column(name="nom", type="string", length=255)
      * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
+     * @Assert\Type(type="string", message="Veuillez rentrer un nom valide")
      */
     private $nom;
 
@@ -43,6 +44,7 @@ class Billet
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
+     * @Assert\Type(type="string", message="Veuillez rentrer un nom valide")
      */
     private $prenom;
 
@@ -50,6 +52,7 @@ class Billet
      * @var \DateTime
      *
      * @ORM\Column(name="dateNaissance", type="date")
+     * @Assert\DateTime(message="Veuillez rentrer une date de naissance valide")
      */
     private $dateNaissance;
 
@@ -57,7 +60,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=255)
-     * @Assert\Country()
+     * @Assert\Country(message="Veuillez rentrer un pays valide")
      */
     private $pays;
 
