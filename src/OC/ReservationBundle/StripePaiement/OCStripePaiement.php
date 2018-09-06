@@ -24,7 +24,7 @@ class OCStripePaiement
                 "amount" => $commande->getPrixTotal() * 100, // Amount in cents
                 "currency" => "eur",
                 "source" => $token,
-                "description" => "Paiement Stripe - OpenClassrooms Exemple"
+                "description" => "Paiement Stripe - OpenClassrooms"
             ));
             return $commande::PAIEMENT_VALIDE;
         } 

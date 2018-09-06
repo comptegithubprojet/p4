@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class TypeDate extends Constraint
 {
-	public $message = "Vous ne pouvez pas reserver pour le jour meme avec le type de billet journée";
+	public $message = "Vous ne pouvez pas reserver avec le type de billet journée pour aujourd hui";
 
 	public function validatedBy()
 	{

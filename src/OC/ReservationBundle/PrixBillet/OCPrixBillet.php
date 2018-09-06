@@ -17,7 +17,6 @@ class OCPrixBillet
 	 * Determine les attributs prixValeur et prixNom à l'entité Billet
 	 *
 	 * @param entity $commande
-	 * @return 
 	 */
 	public function determinationPrixBillet($commande)
 	{

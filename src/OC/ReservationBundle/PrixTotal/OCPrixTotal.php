@@ -5,10 +5,9 @@ namespace OC\ReservationBundle\PrixTotal;
 class OCPrixTotal
 {
 	/**
-	 * Calcul le prix total de la commande et l'associe
+	 * Calcul le prix total de la commande et l'associe avec le setter
 	 *
 	 * @param entity $commande
-	 * @return 
 	 */
 	public function determinationPrixTotal($commande)
 	{

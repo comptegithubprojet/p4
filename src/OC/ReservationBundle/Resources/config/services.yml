@@ -29,6 +29,9 @@ services:
     oc_reservation.codebillet:
         class: OC\ReservationBundle\CodeBillet\OCCodeBillet
 
+    oc_reservation.billetcommande:
+        class: OC\ReservationBundle\BilletCommande\OCBilletCommande
+
     oc_reservation.validator.typedate:                              
         class: OC\ReservationBundle\Validator\TypeDateValidator    
         tags:

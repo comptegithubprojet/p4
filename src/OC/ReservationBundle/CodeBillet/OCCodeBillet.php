@@ -8,7 +8,6 @@ class OCCodeBillet
 	 * Associe un attribut code à l'entité billet
 	 *
 	 * @param entity $billet
-	 * @return 
 	 */
 	public function genereCode($billet)
     {

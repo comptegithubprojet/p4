@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class CapaciteMax extends Constraint
 {
-	public $message = "Vous ne pouvez pas reserver pour ce jour plus de 1000 billets ont été vendus";
+	public $message = "Vous ne pouvez pas reserver pour ce jour car la capacité maximale du musée a été atteinte";
 
 	public function validatedBy()
 	{

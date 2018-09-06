@@ -18,6 +18,7 @@ class CommandeController extends Controller
         if($this->container->get('session')->get('commande') !== null)
         {
             $commande = $this->container->get('session')->get('commande');
+            $this->container->get('session')->set('commande', null);
         }
         else
         {
@@ -66,18 +67,14 @@ class CommandeController extends Controller
     {
         $commande = $this->container->get('session')->get('commande');
 
-        if($commande == null)
+        if($commande->getBillets() == null)
         {
-            return $this->redirectToRoute("oc_reservation_home");
-
-            if($commande->getBillets() == null)
-            {
-                return $this->redirectToRoute("oc_reservation_billet");
-            }
+            return $this->redirectToRoute("oc_reservation_billet");
         }
 
         $this->container->get('oc_reservation.prixbillet')->determinationPrixBillet($commande);
         $this->container->get('oc_reservation.prixtotal')->determinationPrixTotal($commande);
+        $this->container->get('oc_reservation.billetcommande')->associeBilletCommande($commande);
 
         if($commande->getPrixTotal() == 0)
         {
@@ -91,8 +88,6 @@ class CommandeController extends Controller
 
     public function checkoutAction()
     {
-        $commande = $this->container->get('session')->get('commande');
-
         if(!isset($_POST['stripeToken']))
         {
             return $this->redirectToRoute("oc_reservation_recapitulatif");
@@ -103,8 +98,6 @@ class CommandeController extends Controller
         $commande = $session->get('commande');
 
         $this->container->get('oc_reservation.stripepaiement')->validationPaiement($commande);
-
-
 
         if($commande::PAIEMENT_VALIDE !== null) 
         {
@@ -118,12 +111,6 @@ class CommandeController extends Controller
             }
 
             $em = $this->getDoctrine()->getManager();
-
-            foreach($commande->getBillets() as $billet)
-            {
-                $billet->setCommande($commande);               
-            }
-
             $em->persist($commande);
             $em->flush();
 

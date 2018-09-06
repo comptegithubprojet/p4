@@ -34,7 +34,7 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
-     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
+     * @Assert\Length(min=3, max=20, minMessage="Veuillez rentrer un nom valide", maxMessage="Veuillez rentrer un nom valide")
      * @Assert\Type(type="string", message="Veuillez rentrer un nom valide")
      */
     private $nom;
@@ -43,8 +43,8 @@ class Billet
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
-     * @Assert\Length(min=3, max=20, minMessage="Merci de rentrer un nom valide", maxMessage="Merci de rentrer un nom valide")
-     * @Assert\Type(type="string", message="Veuillez rentrer un nom valide")
+     * @Assert\Length(min=3, max=20, minMessage="Veuillez rentrer un prenom valide", maxMessage="Veuillez rentrer un prenom valide")
+     * @Assert\Type(type="string", message="Veuillez rentrer un prenom valide")
      */
     private $prenom;
 

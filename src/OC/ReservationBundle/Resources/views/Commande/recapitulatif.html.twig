@@ -10,20 +10,22 @@
 	<p>Type de billet : {{ commande.type }}</p>
 	<p>Email : {{ commande.email }} </p>
 	
-	<table>
-
-		<tr>
-			<th>Billet</th>
-			<th>Nom</th>
-			<th>Prénom</th>
-			<th>Date de naissance</th>
-			<th>Pays</th>
-			<th>Tarif</th>
-			<th>Prix du billet</th>
-		</tr>
+	<table class="table table-bordered table-condensed justify">
+		<thead>
+			<tr>
+				<th>Billet</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th class="hidden-xs">Date de naissance</th>
+				<th class="hidden-xs">Pays</th>
+				<th>Tarif</th>
+				<th>Prix du billet</th>
+			</tr>
+		</thead>
 
 	{% set numeroBillet = '0' %}
 
+		<tbody>
 	{% for billet in commande.billets %}
 
 		{% set numeroBillet = numeroBillet + 1 %}
@@ -32,25 +34,29 @@
         	<th>Billet n°{{ numeroBillet }}</th>
         	<th>{{ billet.nom }}</th>
         	<th>{{ billet.prenom }}</th>
-        	<th>{{ billet.dateNaissance|date('d/m/Y') }}</th>
-        	<th>{{ billet.pays }}</th>
+        	<th class="hidden-xs">{{ billet.dateNaissance|date('d/m/Y') }}</th>
+        	<th class="hidden-xs">{{ billet.pays }}</th>
         	<th>{{ billet.prixNom }}</th>
-        	<th>{{ billet.prixValeur|number_format(2, ',') }}</th>
+        	<th class="text-right">{{ billet.prixValeur|number_format(2, ',') }} €</th>
         </tr>
     {% endfor %}
+    	</tbody>
 
     </table>
 
-    <p>Montant total de la commande : {{ commande.prixTotal|number_format(2, ',') }}</p>
+    <div class="clearfix">
+    	<p class="pull-left">Prix total :</p>
+    	<p class="pull-right"> {{ commande.prixTotal|number_format(2, ',') }} €</p>
+    </div>
 
-    <form action="{{ path('oc_reservation_checkout') }}" method="POST">
+    <form action="{{ path('oc_reservation_checkout') }}" method="POST" class="pull-right">
 	    <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_llFdgKV13hfAiJ0ieHhgaFw8"
             data-amount="{{ commande.prixTotal }}00"
-            data-name="oc-stripe"
-            data-description="Widget"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-name="Musée du louvre"
+            data-label="Paiement"
+            data-description="Billetterie"
             data-locale="auto"
             data-currency="eur">
 	    </script>

@@ -19,7 +19,9 @@ class BilletType extends AbstractType
         ->add('nom')
         ->add('prenom')
         ->add('dateNaissance', BirthdayType::class)
-        ->add('pays', CountryType::class)
+        ->add('pays', CountryType::class,array(
+            'data' => 'FR',
+        ))
         ->add('reduction')
         ;
     }/**
