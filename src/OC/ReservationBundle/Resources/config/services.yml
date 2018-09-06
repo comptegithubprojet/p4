@@ -24,7 +24,11 @@ services:
         class: OC\ReservationBundle\CodeBillet\OCCodeBillet
 
     oc_reservation.validator.typedate:                              
-        class: OC\ReservationBundle\Validator\TypeDateValidator
-        arguments: ['@session']     
+        class: OC\ReservationBundle\Validator\TypeDateValidator    
         tags:
-            - { name: validator.constraint_validator, alias: oc_reservation_typedate } 
+            - { name: validator.constraint_validator, alias: oc_reservation_typedate }
+
+    oc_reservation.validator.capacitemax:                              
+        class: OC\ReservationBundle\Validator\CapaciteMaxValidator    
+        tags:
+            - { name: validator.constraint_validator, alias: oc_reservation_typedate }  
