@@ -21,19 +21,42 @@
 			var year = date.getFullYear();
 			var nextYear = year + 1;
 
-			var dec = year+'/12/25';
-			var nov = year+'/11/01';
-			var mai = year+'/05/01';
-			var decNext = nextYear+'/12/25';
-			var novNext = nextYear+'/11/01';
-			var maiNext = nextYear+'/05/01';
+			var jourFerme1 = year+'/12/25';
+            var jourFerme1Next = nextYear+'/12/25';
+			var jourFerme2 = year+'/11/01';
+            var jourFerme2Next = nextYear+'/11/01';
+			var jourFerme3 = year+'/05/01';				
+			var jourFerme3Next = nextYear+'/05/01';
+
+            var jourFerie1 = year+'/01/01';
+            var jourFerie1Next = nextYear+'/01/01';
+            var jourFerie2 = year+'/05/01';
+            var jourFerie2Next = nextYear+'/05/01';
+            var jourFerie3 = year+'/05/08';
+            var jourFerie3Next = nextYear+'/05/08';
+            var jourFerie4 = year+'/07/14';
+            var jourFerie4Next = nextYear+'/07/14';
+            var jourFerie5 = year+'/08/15';
+            var jourFerie5Next = nextYear+'/08/15';
+            var jourFerie6 = year+'/11/11';
+            var jourFerie6Next = nextYear+'/11/11';
+
+            var jourFerieSpefic1 = '2018/04/02';
+            var jourFerieSpefic1Next = '2019/04/22';
+            var jourFerieSpefic2 = '2018/05/10';
+            var jourFerieSpefic2Next = '2019/05/30';
+            var jourFerieSpefic3 = '2018/05/21';
+            var jourFerieSpefic3Next = '2019/06/10';
+
+            var jourDesactive = [jourFerme1, jourFerme1Next, jourFerme2, jourFerme2Next, jourFerme3, jourFerme3Next, jourFerie1, jourFerie1Next, jourFerie2, jourFerie2Next, jourFerie3, jourFerie3Next, jourFerie4, jourFerie4Next, jourFerie5, jourFerie5Next, jourFerie6, jourFerie6Next, jourFerieSpefic1, jourFerieSpefic1Next, jourFerieSpefic2, jourFerieSpefic2Next, jourFerieSpefic3, jourFerieSpefic3Next];
+
 
             $('.datepicker').datepicker({
                 format: "yyyy-mm-dd",
                 language: "fr",
                 autoclose: true,
                 daysOfWeekDisabled: '0, 2',
-                datesDisabled: [dec, nov, mai, decNext, novNext, maiNext],
+                datesDisabled: jourDesactive,
                 startDate: date,
                 endDate: '+1y',
                 maxViewMode: 1,                    
