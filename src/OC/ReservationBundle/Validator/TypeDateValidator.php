@@ -9,13 +9,6 @@ use \DateTimeZone;
 
 class TypeDateValidator extends ConstraintValidator
 {
-	private $requestStack;
-
-	public function __construct($requestStack)
-	{
-		$this->requestStack = $requestStack;
-	}
-
 	public function validate($value, Constraint $constraint)
   	{  		
   		$commande = $this->context->getObject();

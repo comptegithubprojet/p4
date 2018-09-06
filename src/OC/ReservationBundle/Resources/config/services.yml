@@ -3,7 +3,13 @@ services:
         class: Doctrine\ORM\EntityRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments:
-            - OC\ReservationBundle\Entity\Prix            
+            - OC\ReservationBundle\Entity\Prix
+
+    OCReservationBundle:Commande:
+        class: Doctrine\ORM\EntityRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments:
+            - OC\ReservationBundle\Entity\Commande            
 
     oc_reservation.prixbillet:
         class: OC\ReservationBundle\PrixBillet\OCPrixBillet
@@ -29,6 +35,8 @@ services:
             - { name: validator.constraint_validator, alias: oc_reservation_typedate }
 
     oc_reservation.validator.capacitemax:                              
-        class: OC\ReservationBundle\Validator\CapaciteMaxValidator    
+        class: OC\ReservationBundle\Validator\CapaciteMaxValidator
+        arguments:
+            - "@OCReservationBundle:Commande"    
         tags:
-            - { name: validator.constraint_validator, alias: oc_reservation_typedate }  
+            - { name: validator.constraint_validator, alias: oc_reservation_capacitemax }  

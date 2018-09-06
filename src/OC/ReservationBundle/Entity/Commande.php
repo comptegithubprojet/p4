@@ -5,6 +5,7 @@ namespace OC\ReservationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use OC\ReservationBundle\Validator\TypeDate;
+use OC\ReservationBundle\Validator\CapaciteMax;
 
 /**
  * Commande
@@ -35,6 +36,7 @@ class Commande
      * @var \DateTime
      *
      * @ORM\Column(name="jour", type="date")
+     * @CapaciteMax()
      */
     private $jour;
 
