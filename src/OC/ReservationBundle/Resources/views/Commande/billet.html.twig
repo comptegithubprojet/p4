@@ -56,8 +56,50 @@
 			// On ajoute le prototype modifié à la fin de la balise <div>
 			$container.append($prototype);
 
+
+
 			// Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
 			index++;
+		}
+
+		$('label:contains("Date naissance")').remove();
+		$('label:contains("Billets")').remove();
+		$('label:contains("Billet label")').remove();
+
+		var i = 0;
+
+		while(i < 10)
+		{
+			var numBillet = i + 1;
+
+			$('label:contains("'+i+'")').remove();
+
+			$('<h1 class="col-xs-offset-1">Billet n°'+numBillet+'</h1>' ).insertBefore( 'div#commande_billet_billets_'+i );
+
+			$("label[for=commande_billet_billets_"+i+"_nom]").addClass( "col-xs-offset-1 col-xs-2 control-label nom"+i );
+			$('input#commande_billet_billets_'+i+'_nom').addClass( "form-control" ).wrap('<div class="col-xs-8 nom'+i+'"></div>');
+			$( ".nom"+i ).wrapAll( "<div class='form-group' />");
+
+			$("label[for=commande_billet_billets_"+i+"_prenom]").addClass( "col-xs-offset-1 col-xs-2 control-label prenom"+i );
+			$('input#commande_billet_billets_'+i+'_prenom').addClass( "form-control" ).wrap('<div class="col-xs-8 prenom'+i+'"></div>');
+			$( ".prenom"+i ).wrapAll( "<div class='form-group' />");
+
+			$( '<label class="required col-xs-offset-1 col-xs-2 control-label dateNaissance'+i+'">Date de naissance</label>' ).insertBefore( 'div#commande_billet_billets_'+i+'_dateNaissance' );
+			$('div#commande_billet_billets_'+i+'_dateNaissance').addClass( "col-xs-8 form-inline dateNaissance"+i );
+			$('select#commande_billet_billets_'+i+'_dateNaissance_day').addClass( "form-control" );
+			$('select#commande_billet_billets_'+i+'_dateNaissance_month').addClass( "form-control" );
+			$('select#commande_billet_billets_'+i+'_dateNaissance_year').addClass( "form-control" );
+			$( ".dateNaissance"+i ).wrapAll( "<div class='form-group' />");
+
+			$("label[for=commande_billet_billets_"+i+"_pays]").addClass( "col-xs-offset-1 col-xs-2 control-label pays"+i );
+			$('select#commande_billet_billets_'+i+'_pays').addClass( "form-control" ).wrap('<div class="col-xs-8 pays'+i+'"></div>');
+			$( ".pays"+i ).wrapAll( "<div class='form-group' />");
+
+			$("label[for=commande_billet_billets_"+i+"_reduction]").addClass( "col-xs-offset-1 col-xs-2 control-label reduction"+i );
+			$('input#commande_billet_billets_'+i+'_reduction').addClass( "form-control-static" ).wrap('<div class="col-xs-8 reduction'+i+'"></div>');
+			$( ".reduction"+i ).wrapAll( "<div class='form-group' />");
+
+			i++;
 		}
 
 	});

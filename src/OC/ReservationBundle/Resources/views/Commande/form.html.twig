@@ -4,7 +4,7 @@
 
 {% if form.email is defined %}
     <div class="form-group">
-        {{ form_label(form.email, "E-mail", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
+        {{ form_label(form.email, "E-mail", {'label_attr': {'class': 'col-xs-offset-1 col-xs-2 control-label'}}) }}
         <div class="col-xs-8">
             {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
         </div>
@@ -17,7 +17,7 @@
 
 {% if form.jour is defined %}
     <div class="form-group">
-        {{ form_label(form.jour, "Jour", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
+        {{ form_label(form.jour, "Jour", {'label_attr': {'class': 'col-xs-offset-1 col-xs-2 control-label'}}) }}
         <div class="col-xs-8">
             {{ form_widget(form.jour, { 'attr': {'class': 'datepicker form-control', 'autocomplete' : 'off'} }) }}
         </div>
@@ -30,7 +30,7 @@
 
 {% if form.type is defined %}
     <div class="form-group">
-        {{ form_label(form.type, "Type de billet", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
+        {{ form_label(form.type, "Type de billet", {'label_attr': {'class': 'col-xs-offset-1 col-xs-2 control-label'}}) }}
         
         <div class="col-xs-8">
             {{ form_widget(form.type, { 'attr': {'class': 'form-control '} }) }}
@@ -44,7 +44,7 @@
 
 {% if form.nbBillets is defined %}
     <div class="form-group">
-        {{ form_label(form.nbBillets, "Nombre de billet", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
+        {{ form_label(form.nbBillets, "Nombre de billet", {'label_attr': {'class': 'col-xs-offset-1 col-xs-2 control-label'}}) }}
         <div class="col-xs-8">
             {{ form_widget(form.nbBillets, { 'attr': {'class': 'form-control '} }) }}
         </div>
@@ -55,61 +55,9 @@
 {% endif %}
 
 {% if form.billets is defined %}
-    {% for billet in form.billets %}
 
-        <div class="form-group">
-            {{ form_label(billet.nom, "Nom", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
-            <div class="col-xs-8">
-                {{ form_widget(billet.nom, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-            <div class="col-sm-offset-2 col-xs-8">
-                {{ form_errors(billet.nom, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-        </div>
+    {{ form_row(form.billets) }}
 
-        <div class="form-group">
-            {{ form_label(billet.prenom, "Prenom", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
-            <div class="col-xs-8">
-                {{ form_widget(billet.prenom, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-            <div class="col-sm-offset-2 col-xs-8">
-                {{ form_errors(billet.prenom, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {{ form_label(billet.pays, "Pays", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
-            <div class="col-xs-8">
-                {{ form_widget(billet.pays, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-            <div class="col-sm-offset-2 col-xs-8">
-                {{ form_errors(billet.pays, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {{ form_label(billet.dateNaissance, "Date de naissance", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
-            <div class="col-xs-8">
-                {{ form_widget(billet.dateNaissance.day, { 'attr': {'class': 'form-control-static'} }) }}
-                {{ form_widget(billet.dateNaissance.month, { 'attr': {'class': 'form-control-static'} }) }}
-                {{ form_widget(billet.dateNaissance.year, { 'attr': {'class': 'form-control-static'} }) }}
-            </div>
-            <div class="col-sm-offset-2 col-xs-8">
-                {{ form_errors(billet.dateNaissance, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {{ form_label(billet.reduction, "Reduction", {'label_attr': {'class': 'col-xs-2 control-label'}}) }}
-            <div class="col-xs-8">
-                {{ form_widget(billet.reduction, { 'attr': {'class': 'form-control-static '} }) }}
-            </div>
-            <div class="col-sm-offset-2 col-xs-8">
-                {{ form_errors(billet.reduction, { 'attr': {'class': 'form-control '} }) }}
-            </div>
-        </div>
-
-    {% endfor %}
 {% endif %}
 
 {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary col-xs-offset-9'}}) }}

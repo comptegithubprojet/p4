@@ -67,6 +67,11 @@ class CommandeController extends Controller
     {
         $commande = $this->container->get('session')->get('commande');
 
+        if($commande == null)
+        {
+            return $this->redirectToRoute("oc_reservation_home");
+        }
+
         if($commande->getBillets() == null)
         {
             return $this->redirectToRoute("oc_reservation_billet");
