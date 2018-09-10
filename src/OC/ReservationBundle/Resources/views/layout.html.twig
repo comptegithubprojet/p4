@@ -6,9 +6,17 @@
 
 {% block body %}
 
-	<h1>Layout bundle</h1>
 
-	{% block ocreservation_body %}
-	{% endblock %}
+	<div id="bandeaureservation" class="col-xs-12">
+		<img id="imgbandeaureservation" src="{{ asset('bundles/ocreservation/img/bandeaureservation.jpg') }}" class="img-responsive">
+	</div>
+
+
+	<div class="container">
+		{% block ocreservation_body %}
+		{% endblock %}
+	</div>
+
+	
 
 {% endblock %}
