@@ -7,12 +7,16 @@
 
 {% block ocreservation_body %}
 
+	<div class="titre-reservation">
+        <h1>Billets</h1>
+    </div>
+
 	<div>
 		{{ include("OCReservationBundle:Commande:form.html.twig") }}
 	</div>
 
-	<div>
-		<p>Attention pour les tarifs réduit besoin cartes....</p>
+	<div id="alert-carte" class="alert alert-danger col-xs-offset-1 col-xs-10">
+		<p>Il est nécessaire pour les personnes bénéficiant du "Tarif Réduit" de présenter leur carte d’étudiant, militaire ou équivalent lors de l’entrée au musée du Louvre.</p>
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -74,7 +78,8 @@
 
 			$('label:contains("'+i+'")').remove();
 
-			$('<h1 class="col-xs-offset-1">Billet n°'+numBillet+'</h1>' ).insertBefore( 'div#commande_billet_billets_'+i );
+			$('<h1 class="col-xs-offset-1 col-xs-10 billet-numero">Billet n°'+numBillet+'</h1>' ).insertBefore( 'div#commande_billet_billets_'+i );
+			$('h1:contains("Billet n°1")').removeClass('billet-numero');
 
 			$("label[for=commande_billet_billets_"+i+"_nom]").addClass( "col-xs-offset-1 col-xs-2 control-label nom"+i );
 			$('input#commande_billet_billets_'+i+'_nom').addClass( "form-control" ).wrap('<div class="col-xs-8 nom'+i+'"></div>');
@@ -98,6 +103,7 @@
 			$("label[for=commande_billet_billets_"+i+"_reduction]").addClass( "col-xs-offset-1 col-xs-2 control-label reduction"+i );
 			$('input#commande_billet_billets_'+i+'_reduction').addClass( "form-control-static" ).wrap('<div class="col-xs-8 reduction'+i+'"></div>');
 			$( ".reduction"+i ).wrapAll( "<div class='form-group' />");
+			$('label:contains("Reduction")').text('Tarif réduit');
 
 			i++;
 		}

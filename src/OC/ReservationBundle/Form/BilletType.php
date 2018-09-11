@@ -18,7 +18,9 @@ class BilletType extends AbstractType
         $builder
         ->add('nom')
         ->add('prenom')
-        ->add('dateNaissance', BirthdayType::class)
+        ->add('dateNaissance', BirthdayType::class, array(
+            'years' => range(date('Y')-120, date('Y') - 5),
+        ))
         ->add('pays', CountryType::class,array(
             'data' => 'FR',
         ))
