@@ -106,12 +106,28 @@ ul
 	font-size: 46px;
 }
 
+form[name="oc_reservationbundle_commande"] 
+{
+	background-color: #F2F2F2;
+	padding: 40px 0 90px 0;
+}
+
+.form-group
+{
+	padding-bottom: 25px;
+}
+
 
 
 .billet-numero
 {
 	border-top: 1px solid black;
 	padding-top: 30px;
+}
+
+.billet-num
+{
+	margin-bottom: 30px;
 }
 
 #alert-carte

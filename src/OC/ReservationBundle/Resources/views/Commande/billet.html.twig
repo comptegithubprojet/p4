@@ -78,7 +78,7 @@
 
 			$('label:contains("'+i+'")').remove();
 
-			$('<h1 class="col-xs-offset-1 col-xs-10 billet-numero">Billet n°'+numBillet+'</h1>' ).insertBefore( 'div#commande_billet_billets_'+i );
+			$('<h1 class="col-xs-offset-1 col-xs-10 billet-numero billet-num">Billet n°'+numBillet+'</h1>' ).insertBefore( 'div#commande_billet_billets_'+i );
 			$('h1:contains("Billet n°1")').removeClass('billet-numero');
 
 			$("label[for=commande_billet_billets_"+i+"_nom]").addClass( "col-xs-offset-1 col-xs-2 control-label nom"+i );
