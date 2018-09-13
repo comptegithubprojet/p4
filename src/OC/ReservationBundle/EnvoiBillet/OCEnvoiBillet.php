@@ -22,11 +22,17 @@ class OCEnvoiBillet
 	{
 		$message = (new \Swift_Message('Reservation musée du Louvre '.$billet->getNom()))
         ->setFrom('reizswety@gmail.com')
-        ->setTo($commande->getEmail())
-        ->setBody(
+        ->setTo($commande->getEmail());
+
+        $logo = $message->embed(\Swift_Image::fromPath('bundles/ocreservation/img/logo.png'));
+        $codebarre = $message->embed(\Swift_Image::fromPath('bundles/ocreservation/img/codebarre.png'));
+
+        $message->setBody(
             $this->templating->render('OCReservationBundle:Email:billet.html.twig', array(
             	'billet' => $billet,
-            	'commande' => $commande
+            	'commande' => $commande,
+            	'logo' => $logo,
+            	'codebarre' => $codebarre,
             )),
             'text/html'
         )

@@ -104,7 +104,7 @@ class CommandeController extends Controller
 
         $this->container->get('oc_reservation.stripepaiement')->validationPaiement($commande);
 
-        if($commande::PAIEMENT_VALIDE !== null) 
+        if($commande->getStatut() == 'valide') 
         {
             $envoiBillet = $this->container->get('oc_reservation.envoibillet');
             $codeBillet = $this->container->get('oc_reservation.codebillet');
@@ -119,13 +119,32 @@ class CommandeController extends Controller
             $em->persist($commande);
             $em->flush();
 
-            $session->set('commande', null);
-
-            return $this->redirectToRoute("oc_reservation_home");
+            return $this->redirectToRoute("oc_reservation_confirmation");
         }
-        elseif($commande::PAIEMENT_NON_VALIDE !== null)
+        elseif($commande->getStatut() == 'refuse')
         {
             return $this->redirectToRoute("oc_reservation_recapitulatif");
         }
+    }
+
+    public function confirmationAction()
+    {
+        $session = $this->container->get('session');
+
+        $commande = $session->get('commande');
+
+        if($commande == null)
+        {
+            return $this->redirectToRoute("oc_reservation_home");
+        }
+
+        if($commande->getStatut() !== 'valide')
+        {
+            return $this->redirectToRoute("oc_reservation_home");
+        } 
+
+        $session->set('commande', null);
+
+        return $this->render('OCReservationBundle:Commande:confirmation.html.twig');
     }
 }

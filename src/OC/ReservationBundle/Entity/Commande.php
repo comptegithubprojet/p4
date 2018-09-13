@@ -15,8 +15,6 @@ use OC\ReservationBundle\Validator\CapaciteMax;
  */
 class Commande
 {
-    const PAIEMENT_NON_VALIDE = 1;
-    const PAIEMENT_VALIDE = 2;
     
     /**
      * @ORM\OneToMany(targetEntity="OC\ReservationBundle\Entity\Billet", mappedBy="commande", cascade={"persist"})
@@ -73,6 +71,13 @@ class Commande
      * @TypeDate()
      */
     private $type;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="statut", type="string")
+     */
+    private $statut;
 
 
     /**
@@ -248,5 +253,29 @@ class Commande
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set statut.
+     *
+     * @param string $statut
+     *
+     * @return Commande
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut.
+     *
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 }

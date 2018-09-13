@@ -26,12 +26,12 @@ class OCStripePaiement
                 "source" => $token,
                 "description" => "Paiement Stripe - OpenClassrooms"
             ));
-            return $commande::PAIEMENT_VALIDE;
+            
+            $commande->setStatut('valide');
         } 
         catch(\Stripe\Error\Card $e) 
         {
-            return $commande::PAIEMENT_NON_VALIDE;
-            // The card has been declined
+            $commande->setStatut('refuse');
         }
 	}
 }

@@ -4,6 +4,8 @@ namespace OC\ReservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use OC\ReservationBundle\Validator\TypeDate;
+use OC\ReservationBundle\Validator\CapaciteMax;
 
 /**
  * Commande
@@ -13,8 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Commande
 {
-    const PAIEMENT_NON_VALIDE = 1;
-    const PAIEMENT_VALIDE = 2;
     
     /**
      * @ORM\OneToMany(targetEntity="OC\ReservationBundle\Entity\Billet", mappedBy="commande", cascade={"persist"})
@@ -34,6 +34,8 @@ class Commande
      * @var \DateTime
      *
      * @ORM\Column(name="jour", type="date")
+     * @Assert\DateTime(message="Veuillez rentrer une date valide")
+     * @CapaciteMax()
      */
     private $jour;
 
@@ -41,7 +43,7 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\Email(message="Merci de renseigner un email valide")
+     * @Assert\Email(message="Veuillez rentrer un email valide")
      */
     private $email;
 
@@ -65,8 +67,17 @@ class Commande
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Choice(choices={"Journée", "Demi-journée"}, message="Veuillez rentrer un type de billet valide")
+     * @TypeDate()
      */
     private $type;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="statut", type="string")
+     */
+    private $statut;
 
 
     /**
@@ -218,5 +229,29 @@ class Commande
     public function getNbBillets()
     {
         return $this->nbBillets;
+    }
+
+    /**
+     * Set type.
+     *
+     * @param string $type
+     *
+     * @return Commande
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type.
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

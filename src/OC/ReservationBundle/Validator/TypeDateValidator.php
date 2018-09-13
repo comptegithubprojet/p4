@@ -22,14 +22,11 @@ class TypeDateValidator extends ConstraintValidator
 
 			$dateVisite = $commande->getJour();
 
-			$interval = $maintenant->diff($dateVisite);
-			$differenceJour = $interval->format('%a');
-
-			$heure = $maintenant->format('H');
-
-			if($differenceJour == 0)
+			if($maintenant->format('%y%m%d') == $dateVisite->format('%y%m%d'))
 			{
-				if($heure > 14)
+				$heure = $maintenant->format('H');
+
+				if($heure >= 14)
 				{
 					$this->context->addViolation($constraint->message);
 				}

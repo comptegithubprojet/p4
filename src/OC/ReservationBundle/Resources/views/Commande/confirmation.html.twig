@@ -1,0 +1,23 @@
+{% extends "OCReservationBundle::layout.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block ocreservation_body %}
+
+    <div class="titre-reservation">
+        <h1>Confirmation de votre commande</h1>
+    </div>
+
+    <div class="message-confirmation">
+        <p>Cher(e) client(e),</p>
+        <p>Nous vous remercions pour votre commande.</p>
+        <p>Les billets ont été envoyé sur votre boite mail.</p>
+    </div>
+
+    <div class="btn-confirmation pull-right">
+        <a href="/Symfony/web/app_dev.php/" class="btn btn-default">Retour à l'accueil</a>
+    </div>
+
+{% endblock %}

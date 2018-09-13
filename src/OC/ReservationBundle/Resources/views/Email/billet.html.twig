@@ -5,74 +5,66 @@
 
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
 
-	<div class="container-fluid">
 
-		<div class="header-bandeau">
+	<div class="header-bandeau">
 
-			<div id="header-bandeau-gris">
-				
-			</div>
+		<div id="header-bandeau-gris">
+			
+		</div>
 
-			<div id="header-bandeau-noir">
-				<img src="{{ asset('bundles/ocreservation/img/logo.png') }}" class="img-responsive">
-			</div>
-
+		<div id="header-bandeau-noir">
+			<img src="{{ logo }}">
 		</div>
 
 	</div>
 
 
-	<div class="container">
+	<div class="titre-email">
+		<h1>LOUVRE.FR</h1>
+	</div>
 
-		<div class="titre-email">
-			<h1>LOUVRE.FR</h1>
+
+	<div class="contenu-email">
+
+		<div class="titre-contenu">
+			<h2>Merci pour votre commande !</h2>
+			
 		</div>
 
-		<div class="contenu-email">
+		<div class="message-email">
+			<p>Bonjour {{ billet.prenom }},</p>
+			<p>Merci pour votre commande.</p>
+			<p>Ce mail fait foi billet, merci de vous présenter à l'entrée du musée du Louvre avec cet e-mail.</p>
+		</div>
 
-			<div class="titre-contenu">
-				<h2>Merci pour votre commande !</h2>
-				
+		<div class="billet">
+			<div class="titrebillet">
+				<h1>Musée du Louvre</h1>
+				<img src="{{ logo }}">
 			</div>
+			<h2 id="datevisite"><strong>Date de la viste : </strong>{{ commande.jour|date('d/m/Y') }}</h2>
+			<h3><strong>Prenom et NOM : </strong>{{ billet.prenom }} {{ billet.nom }}</h3>
+			<h3 id="tarifvisite"><strong>Tarif : </strong>{{ billet.prixNom }} {{ billet.prixValeur|number_format(2, ',') }}€</h3>
+			<h3><strong>Code billet : </strong>{{ billet.code }}</h3>
+			<img id="codebarre" src="{{ codebarre }}">
+		</div>
 
-			<div class="message-email">
-				<p>Bonjour {{ billet.prenom }},</p>
-				<p>Merci pour votre commande.</p>
-				<p>Ce mail fait foi billet, merci de vous présenter à l'entrée du musée du Louvre avec cet e-mail.</p>
+		<div class="message-email">
+			<div id="alert-carte-email">
+				<p>Il est nécessaire pour les personnes bénéficiant du "Tarif Réduit" de présenter leur carte d’étudiant, militaire ou équivalent lors de l’entrée au musée du Louvre.</p>
 			</div>
-
-			<div class="billet">
-				<div class="titrebillet">
-					<h1>Musée du Louvre</h1>
-					<img src="logo.png" class="img-responsive">
-				</div>
-				<h2 id="datevisite"><strong>Date de la viste : </strong>{{ commande.jour|date('d/m/Y') }}</h2>
-				<h3><strong>Prenom et NOM : </strong>{{ billet.prenom }} {{ billet.nom }}</h3>
-				<h3 id="tarifvisite"><strong>Tarif : </strong>{{ billet.prixNom }} {{ billet.prixValeur|number_format(2, ',') }}€</h3>
-				<h3><strong>Code billet : </strong>{{ billet.code }}</h3>
-				<img id="codebarre" src="{{ asset('bundles/ocreservation/img/codebarre.png') }}" class="img-responsive">
+			<div>
+				<p>À bientôt,</p>
+				<p>L'équipe du musée du louvre.</p>
 			</div>
-
-			<div class="message-email">
-				<div id="alert-carte-email" class="alert alert-danger">
-					<p>Il est nécessaire pour les personnes bénéficiant du "Tarif Réduit" de présenter leur carte d’étudiant, militaire ou équivalent lors de l’entrée au musée du Louvre.</p>
-				</div>
-				<div>
-					<p>À bientôt,</p>
-					<p>L'équipe du musée du louvre.</p>
-				</div>
-			</div>
-
 		</div>
 
 	</div>
+
 
 </body>
 
@@ -103,7 +95,7 @@ body
 #header-bandeau-noir img
 {
 	width: 23%;
-	margin-left:375px;
+	margin-left:19.5%;
 }
 
 
@@ -171,5 +163,7 @@ body
 #alert-carte-email
 {
 	margin-top: 30px;
+	margin-bottom: 30px;
+	color: red;
 }
 </style>

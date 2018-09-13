@@ -13,3 +13,7 @@ oc_reservation_recapitulatif:
 oc_reservation_checkout:
     path:     /checkout
     defaults: { _controller: OCReservationBundle:Commande:checkout }
+
+oc_reservation_confirmation:
+    path:     /confirmation
+    defaults: { _controller: OCReservationBundle:Commande:confirmation }

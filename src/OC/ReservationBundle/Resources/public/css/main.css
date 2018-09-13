@@ -117,6 +117,12 @@ form[name="oc_reservationbundle_commande"]
 	padding-bottom: 25px;
 }
 
+.error-form
+{
+	margin-top: 10px;
+	color: red;
+}
+
 
 
 .billet-numero
@@ -203,6 +209,17 @@ button.stripe-button-el>span
 	font-family: Arial;
 }
 
+.message-confirmation
+{
+    background-color: #F2F2F2;
+    padding: 10px 10px 10px 10px;
+    font-size: 18px;
+}
+
+.btn-confirmation
+{
+    margin-top: 20px;
+}
 
 
 .block-social-network
